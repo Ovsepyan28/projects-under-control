@@ -2,12 +2,16 @@ import { FC } from "react";
 
 import { ProjectCard } from "../ProjectCard";
 
+import { useAppSelector } from "../../hooks/redux/useAppSelector";
+
 import "./styles.sass";
-
-const fakeProjects = ["Постройка корабля", "Постройка самолета"];
-
-const projectsList = fakeProjects.map((project) => <ProjectCard name={project} key={project} />);
-
 export const Projects: FC = () => {
-    return <div className="projects">{projectsList}</div>;
+    const projects = useAppSelector((state) => state);
+    return (
+        <div className="projects">
+            {projects.projects.map((project) => (
+                <ProjectCard name={project.projectName} key={project.projectId} url={project.projectId} />
+            ))}
+        </div>
+    );
 };

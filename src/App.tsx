@@ -4,7 +4,7 @@ import { RouteWithLayout } from "./components/RouteWithLayout";
 import { Projects } from "./components/Projects";
 import { Project } from "./components/Project";
 
-function App() {
+export const App = () => {
     return (
         <div className="App">
             <Routes>
@@ -15,6 +15,4 @@ function App() {
             </Routes>
         </div>
     );
-}
-
-export default App;
+};

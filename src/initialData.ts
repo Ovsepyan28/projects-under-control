@@ -1,29 +1,168 @@
+import { v4 as uuid } from "uuid";
+
 import { State } from "./types";
 
-export const initial: State = {
-    "column-1": {
-        title: "Queue",
-        tasks: [
-            { id: "item-1", content: "Элемент 1" },
-            { id: "item-2", content: "Элемент 2" },
-            { id: "item-3", content: "Элемент 3" },
-            { id: "item-7", content: "Элемент 7" },
-        ],
+export const initialState: State = [
+    {
+        projectId: "b809e5a9-24b9-404a-9658-67597bd7db14",
+        projectName: "Построить самолет",
+        columns: {
+            "column-1": {
+                title: "Queue",
+                tasks: [
+                    {
+                        taskId: uuid(),
+                        content: "Задача 1",
+                        columnId: "column-1",
+                        projectId: "b809e5a9-24b9-404a-9658-67597bd7db14",
+                    },
+                    {
+                        taskId: uuid(),
+                        content: "Задача 2",
+                        columnId: "column-1",
+                        projectId: "b809e5a9-24b9-404a-9658-67597bd7db14",
+                    },
+                    {
+                        taskId: uuid(),
+                        content: "Задача 3",
+                        columnId: "column-1",
+                        projectId: "b809e5a9-24b9-404a-9658-67597bd7db14",
+                    },
+                    {
+                        taskId: uuid(),
+                        content: "Задача 7",
+                        columnId: "column-1",
+                        projectId: "b809e5a9-24b9-404a-9658-67597bd7db14",
+                    },
+                ],
+            },
+            "column-2": {
+                title: "Development",
+                tasks: [
+                    {
+                        taskId: uuid(),
+                        content: "Задача 4",
+                        columnId: "column-2",
+                        projectId: "b809e5a9-24b9-404a-9658-67597bd7db14",
+                    },
+                    {
+                        taskId: uuid(),
+                        content: "Задача 5",
+                        columnId: "column-2",
+                        projectId: "b809e5a9-24b9-404a-9658-67597bd7db14",
+                    },
+                    {
+                        taskId: uuid(),
+                        content: "Задача 6",
+                        columnId: "column-2",
+                        projectId: "b809e5a9-24b9-404a-9658-67597bd7db14",
+                    },
+                ],
+            },
+            "column-3": {
+                title: "Done",
+                tasks: [
+                    {
+                        taskId: uuid(),
+                        content: "Задача 8",
+                        columnId: "column-3",
+                        projectId: "b809e5a9-24b9-404a-9658-67597bd7db14",
+                    },
+                    {
+                        taskId: uuid(),
+                        content: "Задача 9",
+                        columnId: "column-3",
+                        projectId: "b809e5a9-24b9-404a-9658-67597bd7db14",
+                    },
+                    {
+                        taskId: uuid(),
+                        content: "Задача 10",
+                        columnId: "column-3",
+                        projectId: "b809e5a9-24b9-404a-9658-67597bd7db14",
+                    },
+                ],
+            },
+        },
     },
-    "column-2": {
-        title: "Development",
-        tasks: [
-            { id: "item-4", content: "Элемент 4" },
-            { id: "item-5", content: "Элемент 5" },
-            { id: "item-6", content: "Элемент 6" },
-        ],
+    {
+        projectId: "ea065155-960b-4d43-b3e0-b02d722b69a2",
+        projectName: "Построить корабль",
+        columns: {
+            "column-1": {
+                title: "Queue",
+                tasks: [
+                    {
+                        taskId: uuid(),
+                        content: "Задача 1",
+                        columnId: "column-1",
+                        projectId: "ea065155-960b-4d43-b3e0-b02d722b69a2",
+                    },
+                    {
+                        taskId: uuid(),
+                        content: "Задача 2",
+                        columnId: "column-1",
+                        projectId: "ea065155-960b-4d43-b3e0-b02d722b69a2",
+                    },
+                    {
+                        taskId: uuid(),
+                        content: "Задача 3",
+                        columnId: "column-1",
+                        projectId: "ea065155-960b-4d43-b3e0-b02d722b69a2",
+                    },
+                    {
+                        taskId: uuid(),
+                        content: "Задача 7",
+                        columnId: "column-1",
+                        projectId: "ea065155-960b-4d43-b3e0-b02d722b69a2",
+                    },
+                ],
+            },
+            "column-2": {
+                title: "Development",
+                tasks: [
+                    {
+                        taskId: uuid(),
+                        content: "Задача 4",
+                        columnId: "column-2",
+                        projectId: "ea065155-960b-4d43-b3e0-b02d722b69a2",
+                    },
+                    {
+                        taskId: uuid(),
+                        content: "Задача 5",
+                        columnId: "column-2",
+                        projectId: "ea065155-960b-4d43-b3e0-b02d722b69a2",
+                    },
+                    {
+                        taskId: uuid(),
+                        content: "Задача 6",
+                        columnId: "column-2",
+                        projectId: "ea065155-960b-4d43-b3e0-b02d722b69a2",
+                    },
+                ],
+            },
+            "column-3": {
+                title: "Done",
+                tasks: [
+                    {
+                        taskId: uuid(),
+                        content: "Задача 8",
+                        columnId: "column-3",
+                        projectId: "ea065155-960b-4d43-b3e0-b02d722b69a2",
+                    },
+                    {
+                        taskId: uuid(),
+                        content: "Задача 9",
+                        columnId: "column-3",
+                        projectId: "ea065155-960b-4d43-b3e0-b02d722b69a2",
+                    },
+                    {
+                        taskId: uuid(),
+                        content: "Задача 10",
+                        columnId: "column-3",
+                        projectId: "ea065155-960b-4d43-b3e0-b02d722b69a2",
+                    },
+                ],
+            },
+        },
     },
-    "column-3": {
-        title: "Done",
-        tasks: [
-            { id: "item-8", content: "Элемент 8" },
-            { id: "item-9", content: "Элемент 9" },
-            { id: "item-10", content: "Элемент 10" },
-        ],
-    },
-};
+];

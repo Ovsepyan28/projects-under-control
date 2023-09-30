@@ -1,18 +1,22 @@
 import { FC, useState } from "react";
 import { DragDropContext, DraggableLocation, DropResult } from "react-beautiful-dnd";
 
-import { State } from "../../types";
+import { Board as BoardType, Project } from "../../types";
 
 import { Column } from "../Column";
+
+import { useAppDispatch } from "../../hooks/redux/useAppDispatch";
+import { setProject } from "../../redux/reducers/projects/actions";
 
 import "./styles.sass";
 
 interface Props {
-    state: State;
+    project: Project;
 }
 
-export const Board: FC<Props> = ({ state }) => {
-    const [columns, setColumns] = useState<State>(state);
+export const Board: FC<Props> = ({ project }) => {
+    const [columns, setColumns] = useState<BoardType>(project.columns);
+    const dispatch = useAppDispatch();
 
     const onDragEnd = (result: DropResult) => {
         if (!result.destination) return;
@@ -22,20 +26,38 @@ export const Board: FC<Props> = ({ state }) => {
 
         if (source.droppableId === destination.droppableId) {
             // Перемещение элемента внутри одной колонки
-            const column = columns[source.droppableId as keyof State];
+            const column = columns[source.droppableId as keyof BoardType];
             const newTasks = Array.from(column.tasks);
             const [movedTask] = newTasks.splice(source.index, 1);
             newTasks.splice(destination.index, 0, movedTask);
+            dispatch(
+                setProject({
+                    projectId: project.projectId,
+                    projectName: project.projectName,
+                    columns: { ...columns, [source.droppableId]: { ...column, tasks: newTasks } },
+                })
+            );
             setColumns({ ...columns, [source.droppableId]: { ...column, tasks: newTasks } });
         } else {
             // Перемещение элемента между колонками
-            const sourceColumn = columns[source.droppableId as keyof State];
-            const destinationColumn = columns[destination.droppableId as keyof State];
+            const sourceColumn = columns[source.droppableId as keyof BoardType];
+            const destinationColumn = columns[destination.droppableId as keyof BoardType];
             const sourceTasks = Array.from(sourceColumn.tasks);
             const destinationTasks = Array.from(destinationColumn.tasks);
             const [movedTask] = sourceTasks.splice(source.index, 1);
             destinationTasks.splice(destination.index, 0, movedTask);
 
+            dispatch(
+                setProject({
+                    projectId: project.projectId,
+                    projectName: project.projectName,
+                    columns: {
+                        ...columns,
+                        [source.droppableId]: { ...sourceColumn, tasks: sourceTasks },
+                        [destination.droppableId]: { ...destinationColumn, tasks: destinationTasks },
+                    },
+                })
+            );
             setColumns({
                 ...columns,
                 [source.droppableId]: { ...sourceColumn, tasks: sourceTasks },
@@ -50,8 +72,8 @@ export const Board: FC<Props> = ({ state }) => {
                 {Object.keys(columns).map((columnId) => (
                     <Column
                         key={columnId}
-                        title={columns[columnId as keyof State].title}
-                        tasks={columns[columnId as keyof State].tasks}
+                        title={columns[columnId as keyof BoardType].title}
+                        tasks={columns[columnId as keyof BoardType].tasks}
                         columnId={columnId}
                     />
                 ))}

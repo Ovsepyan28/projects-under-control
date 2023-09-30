@@ -1,17 +1,20 @@
 import { FC } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { Id } from "../../types";
+
 import "./styles.sass";
 
-export interface IProjectCardProps {
+interface Props {
     name: string;
+    url: Id;
 }
 
-export const ProjectCard: FC<IProjectCardProps> = ({ name }) => {
+export const ProjectCard: FC<Props> = ({ name, url }) => {
     const navigate = useNavigate();
 
     return (
-        <div className="projectCard" onClick={() => navigate(`/123`)}>
+        <div className="projectCard" onClick={() => navigate(`/${url}`)}>
             {name}
         </div>
     );

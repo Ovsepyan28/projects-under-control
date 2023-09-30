@@ -1,15 +1,14 @@
 import { FC } from "react";
+import { useParams } from "react-router-dom";
 
 import { Board } from "../Board";
 
-import { initial } from "../../initialData";
+import { useAppSelector } from "../../hooks/redux/useAppSelector";
 
 import "./styles.sass";
 
 export const Project: FC = () => {
-    return (
-        <div className="project">
-            <Board state={initial} />
-        </div>
-    );
+    const params = useParams();
+    const project = useAppSelector((state) => state.projects.find((project) => project.projectId === params.id));
+    return <div className="project">{project && <Board project={project} />}</div>;
 };

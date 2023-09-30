@@ -12,7 +12,7 @@ interface Props {
 
 export const Task: FC<Props> = ({ index, task }) => {
     return (
-        <Draggable draggableId={task.id} index={index}>
+        <Draggable draggableId={task.taskId} index={index}>
             {(provided: DraggableProvided) => (
                 <div
                     className="task"

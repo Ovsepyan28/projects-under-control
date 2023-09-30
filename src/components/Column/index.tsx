@@ -21,7 +21,7 @@ export const Column: FC<Props> = ({ title, tasks, columnId }) => {
                 {(provided: DroppableProvided) => (
                     <div {...provided.droppableProps} ref={provided.innerRef} className="tasks-list">
                         {tasks.map((task, index) => (
-                            <Task key={task.id} task={task} index={index} />
+                            <Task key={task.taskId} task={task} index={index} />
                         ))}
                         {provided.placeholder}
                     </div>
