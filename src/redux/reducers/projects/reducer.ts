@@ -35,7 +35,6 @@ export const projectsReducer = (state = getStartProjects(), action: Action): Sta
         case SET_PROJECT:
             let targetProject = state.findIndex((project) => project.projectId === action.payload.project.projectId);
             state[targetProject] = action.payload.project;
-            console.log(state);
             return state;
         case ADD_TASK:
             const newTask: Task = {

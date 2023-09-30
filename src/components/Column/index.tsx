@@ -1,22 +1,35 @@
-import { FC } from "react";
+import { FC, useCallback, useState } from "react";
 import { Droppable, DroppableProvided } from "react-beautiful-dnd";
 
-import { Tasks } from "../../types";
+import { Board, Id, Tasks } from "../../types";
 
 import { Task } from "../Task";
+import { CreateTask } from "../CreateTask";
 
 import "./styles.sass";
 
 interface Props {
     title: string;
     tasks: Tasks;
-    columnId: string;
+    columnId: keyof Board;
+    projectId: Id;
 }
 
-export const Column: FC<Props> = ({ title, tasks, columnId }) => {
+export const Column: FC<Props> = ({ title, tasks, columnId, projectId }) => {
+    const [openModal, setOpenModal] = useState(false);
+
+    const onRefuse = useCallback(() => {
+        setOpenModal(false);
+    }, []);
+
     return (
         <div className="column">
-            <h2>{title}</h2>
+            <div className="column-header">
+                <h2>{title}</h2>
+                <button className="column-new" onClick={() => setOpenModal(true)}>
+                    New
+                </button>
+            </div>
             <Droppable droppableId={columnId}>
                 {(provided: DroppableProvided) => (
                     <div {...provided.droppableProps} ref={provided.innerRef} className="tasks-list">
@@ -27,6 +40,7 @@ export const Column: FC<Props> = ({ title, tasks, columnId }) => {
                     </div>
                 )}
             </Droppable>
+            {openModal && <CreateTask onClose={onRefuse} columnId={columnId} projectId={projectId} />}
         </div>
     );
 };

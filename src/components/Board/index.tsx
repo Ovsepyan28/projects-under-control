@@ -74,7 +74,8 @@ export const Board: FC<Props> = ({ project }) => {
                         key={columnId}
                         title={columns[columnId as keyof BoardType].title}
                         tasks={columns[columnId as keyof BoardType].tasks}
-                        columnId={columnId}
+                        columnId={columnId as keyof BoardType}
+                        projectId={project.projectId}
                     />
                 ))}
             </div>
