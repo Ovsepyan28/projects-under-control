@@ -11,7 +11,7 @@ export const ProjectCard: FC<IProjectCardProps> = ({ name }) => {
     const navigate = useNavigate();
 
     return (
-        <div className="projectCard" onClick={() => navigate(`/test`)}>
+        <div className="projectCard" onClick={() => navigate(`/123`)}>
             {name}
         </div>
     );
