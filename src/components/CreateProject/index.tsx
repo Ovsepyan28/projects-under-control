@@ -1,27 +1,23 @@
 import { FC, useState } from "react";
 import { createPortal } from "react-dom";
 
-import { Board, Id } from "../../types";
-
 import { ModalContainer } from "../ModalContainer";
 
 import { useAppDispatch } from "../../hooks/redux/useAppDispatch";
-import { addTask } from "../../redux/reducers/projects/actions";
+import { addProject } from "../../redux/reducers/projects/actions";
 
 import "./styles.sass";
 
 interface Props {
-    projectId: Id;
-    columnId: keyof Board;
     onClose: () => void;
 }
 
-export const CreateTask: FC<Props> = ({ onClose, columnId, projectId }) => {
+export const CreateProject: FC<Props> = ({ onClose }) => {
     const [text, setText] = useState("");
     const dispatch = useAppDispatch();
 
-    const onCreateTask = () => {
-        dispatch(addTask(columnId, projectId, text));
+    const onCreateProject = () => {
+        dispatch(addProject(text));
         onClose();
     };
 
@@ -34,9 +30,9 @@ export const CreateTask: FC<Props> = ({ onClose, columnId, projectId }) => {
                 }}
             >
                 <div className="createTask-header">
-                    <h2>Новая задача</h2>
+                    <h2>Новый проект</h2>
                     <div className="createTask-buttons">
-                        <button className="createTask-create" onClick={onCreateTask}>
+                        <button className="createTask-create" onClick={onCreateProject}>
                             Создать
                         </button>
                         <button className="createTask-cancel" onClick={onClose}>
@@ -47,7 +43,7 @@ export const CreateTask: FC<Props> = ({ onClose, columnId, projectId }) => {
                 <input
                     className="input"
                     value={text}
-                    placeholder="Наименование задачи"
+                    placeholder="Наименование проекта"
                     onChange={(e) => setText(e.target.value)}
                 />
             </div>

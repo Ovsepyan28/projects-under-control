@@ -4,8 +4,13 @@ import "./styles.sass";
 
 interface Props {
     children: ReactNode;
+    onClose: () => void;
 }
 
-export const ModalContainer: FC<Props> = ({ children }) => {
-    return <div className="modalContainer">{children}</div>;
+export const ModalContainer: FC<Props> = ({ children, onClose }) => {
+    return (
+        <div className="blurContainer" onClick={onClose}>
+            {children}
+        </div>
+    );
 };
