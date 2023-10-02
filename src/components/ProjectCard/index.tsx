@@ -1,7 +1,9 @@
-import { FC, MouseEventHandler } from "react";
+import { FC, MouseEventHandler, useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Id } from "../../types";
+
+import { ConfirmRemove } from "../ConfirmRemove";
 
 import { useAppDispatch } from "../../hooks/redux/useAppDispatch";
 import { removeProject } from "../../redux/reducers/projects/actions";
@@ -15,13 +17,18 @@ interface Props {
 }
 
 export const ProjectCard: FC<Props> = ({ name, url, projectId }) => {
+    const [openConfirm, setOpenConfirm] = useState(false);
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
 
     const onRemoveProject: MouseEventHandler<HTMLButtonElement> = (e) => {
         e.stopPropagation();
-        dispatch(removeProject(projectId));
+        setOpenConfirm(true);
     };
+
+    const onRefuseConfirm = useCallback(() => {
+        setOpenConfirm(false);
+    }, []);
 
     return (
         <div className="projectCard" onClick={() => navigate(`/${url}`)}>
@@ -29,6 +36,9 @@ export const ProjectCard: FC<Props> = ({ name, url, projectId }) => {
             <div>
                 <button onClick={onRemoveProject}>Delete</button>
             </div>
+            {openConfirm && (
+                <ConfirmRemove onClose={onRefuseConfirm} onRemove={() => dispatch(removeProject(projectId))} />
+            )}
         </div>
     );
 };

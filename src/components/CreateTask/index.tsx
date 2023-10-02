@@ -4,6 +4,7 @@ import { createPortal } from "react-dom";
 import { Board, Id } from "../../types";
 
 import { ModalContainer } from "../ModalContainer";
+import { PortalContent } from "../PortalContent";
 
 import { useAppDispatch } from "../../hooks/redux/useAppDispatch";
 import { addTask } from "../../redux/reducers/projects/actions";
@@ -32,31 +33,26 @@ export const CreateTask: FC<Props> = ({ onClose, columnId, projectId }) => {
 
     return createPortal(
         <ModalContainer onClose={onClose}>
-            <div
-                className="createTask"
-                onClick={(e) => {
-                    e.stopPropagation();
-                }}
-            >
+            <PortalContent>
                 <div className="createTask-header">
                     <h2>Новая задача</h2>
                     <div className="createTask-buttons">
                         <button className="createTask-create" onClick={onCreateTask} disabled={!(title.length > 3)}>
-                            Создать
+                            Create
                         </button>
                         <button className="createTask-cancel" onClick={onClose}>
-                            Отмена
+                            Cancel
                         </button>
                     </div>
                 </div>
                 <input
-                    className="input"
+                    className="createTask-input"
                     value={title}
                     placeholder="Наименование задачи"
                     onChange={(e) => setTitle(e.target.value)}
                     ref={inputRef}
                 />
-            </div>
+            </PortalContent>
         </ModalContainer>,
         document.getElementById("modalContainer") || document.body
     );
