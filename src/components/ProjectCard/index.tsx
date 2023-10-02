@@ -24,7 +24,7 @@ export const ProjectCard: FC<Props> = ({ name, url, projectId }) => {
     };
 
     return (
-        <div className="projectCard" onClick={() => navigate(`/${url}`)}>
+        <div className="projectCard" onClick={() => navigate(`/projects-under-control/${url}`)}>
             {name}
             <div>
                 <button onClick={onRemoveProject}>Delete</button>
