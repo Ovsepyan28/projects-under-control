@@ -10,9 +10,9 @@ export const App = () => {
     return (
         <div className="App">
             <Routes>
-                <Route path="/projects-under-control" element={<RouteWithLayout />}>
+                <Route path="/" element={<RouteWithLayout />}>
                     <Route index element={<Projects />} />
-                    <Route path="/projects-under-control/:id" element={<Project />} />
+                    <Route path="/:id" element={<Project />} />
                 </Route>
             </Routes>
         </div>

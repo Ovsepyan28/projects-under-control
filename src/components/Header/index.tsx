@@ -7,7 +7,7 @@ import "./styles.sass";
 export const Header: FC = () => {
     return (
         <div className="header">
-            <NavLink end className="buttonProjects" to="/projects-under-control">
+            <NavLink end className="buttonProjects" to="/">
                 Выбор проекта
             </NavLink>
         </div>
