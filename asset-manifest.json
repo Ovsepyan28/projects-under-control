@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/projects-under-control/static/css/main.20c39593.css",
+    "main.js": "/projects-under-control/static/js/main.393b7b88.js",
+    "index.html": "/projects-under-control/index.html",
+    "main.20c39593.css.map": "/projects-under-control/static/css/main.20c39593.css.map",
+    "main.393b7b88.js.map": "/projects-under-control/static/js/main.393b7b88.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.20c39593.css",
+    "static/js/main.393b7b88.js"
+  ]
+}
