@@ -14,6 +14,7 @@ export const projectsReducer = (state = getStartProjects(), action: Action): Sta
                 {
                     projectId: uuid(),
                     projectName: action.payload.projectName,
+                    taskCount: 0,
                     columns: {
                         "column-1": {
                             title: "Queue",
@@ -41,19 +42,20 @@ export const projectsReducer = (state = getStartProjects(), action: Action): Sta
                 taskId: uuid(),
                 columnId: action.payload.columnId,
                 projectId: action.payload.projectId,
-                content: action.payload.content,
+                taskTitle: action.payload.taskTitle,
+                taskCreateDate: Date.now(),
             };
             state
                 .find((project) => project.projectId === action.payload.projectId)
                 ?.columns[action.payload.columnId as keyof Board].tasks.push(newTask);
             return state;
         case REMOVE_TASK:
-            let targetTasks = state.find((project) => project.projectId === action.payload.projectId)?.columns[
+            const targetProjectIndex = state.findIndex((project) => project.projectId === action.payload.projectId);
+            const targetTaskIndex = state[targetProjectIndex].columns[
                 action.payload.columnId as keyof Board
-            ].tasks;
-            // eslint-disable-next-line @typescript-eslint/no-unused-vars
-            targetTasks = targetTasks?.filter((task) => task.taskId !== action.payload.taskId);
-            return state;
+            ].tasks.findIndex((task) => task.taskId === action.payload.taskId);
+            state[targetProjectIndex].columns[action.payload.columnId as keyof Board].tasks.splice(targetTaskIndex, 1);
+            return [...state];
         default:
             return state;
     }

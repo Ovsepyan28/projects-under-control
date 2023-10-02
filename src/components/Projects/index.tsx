@@ -26,7 +26,12 @@ export const Projects: FC = () => {
                     </button>
                 </div>
                 {projects.projects.map((project) => (
-                    <ProjectCard name={project.projectName} key={project.projectId} url={project.projectId} />
+                    <ProjectCard
+                        name={project.projectName}
+                        key={project.projectId}
+                        url={project.projectId}
+                        projectId={project.projectId}
+                    />
                 ))}
                 {openModal && <CreateProject onClose={onRefuse} />}
             </div>

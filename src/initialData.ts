@@ -6,33 +6,18 @@ export const initialState: State = [
     {
         projectId: "b809e5a9-24b9-404a-9658-67597bd7db14",
         projectName: "Построить самолет",
+        taskCount: 3,
         columns: {
             "column-1": {
                 title: "Queue",
                 tasks: [
                     {
                         taskId: uuid(),
-                        content: "Задача 1",
                         columnId: "column-1",
                         projectId: "b809e5a9-24b9-404a-9658-67597bd7db14",
-                    },
-                    {
-                        taskId: uuid(),
-                        content: "Задача 2",
-                        columnId: "column-1",
-                        projectId: "b809e5a9-24b9-404a-9658-67597bd7db14",
-                    },
-                    {
-                        taskId: uuid(),
-                        content: "Задача 3",
-                        columnId: "column-1",
-                        projectId: "b809e5a9-24b9-404a-9658-67597bd7db14",
-                    },
-                    {
-                        taskId: uuid(),
-                        content: "Задача 7",
-                        columnId: "column-1",
-                        projectId: "b809e5a9-24b9-404a-9658-67597bd7db14",
+                        taskNumber: 1,
+                        taskTitle: "Задача 1",
+                        taskCreateDate: 1696199995167,
                     },
                 ],
             },
@@ -41,21 +26,11 @@ export const initialState: State = [
                 tasks: [
                     {
                         taskId: uuid(),
-                        content: "Задача 4",
                         columnId: "column-2",
                         projectId: "b809e5a9-24b9-404a-9658-67597bd7db14",
-                    },
-                    {
-                        taskId: uuid(),
-                        content: "Задача 5",
-                        columnId: "column-2",
-                        projectId: "b809e5a9-24b9-404a-9658-67597bd7db14",
-                    },
-                    {
-                        taskId: uuid(),
-                        content: "Задача 6",
-                        columnId: "column-2",
-                        projectId: "b809e5a9-24b9-404a-9658-67597bd7db14",
+                        taskNumber: 2,
+                        taskTitle: "Задача 2",
+                        taskCreateDate: 1696200035590,
                     },
                 ],
             },
@@ -64,21 +39,11 @@ export const initialState: State = [
                 tasks: [
                     {
                         taskId: uuid(),
-                        content: "Задача 8",
                         columnId: "column-3",
                         projectId: "b809e5a9-24b9-404a-9658-67597bd7db14",
-                    },
-                    {
-                        taskId: uuid(),
-                        content: "Задача 9",
-                        columnId: "column-3",
-                        projectId: "b809e5a9-24b9-404a-9658-67597bd7db14",
-                    },
-                    {
-                        taskId: uuid(),
-                        content: "Задача 10",
-                        columnId: "column-3",
-                        projectId: "b809e5a9-24b9-404a-9658-67597bd7db14",
+                        taskNumber: 3,
+                        taskTitle: "Задача 3",
+                        taskCreateDate: 16962000359890,
                     },
                 ],
             },
@@ -87,33 +52,18 @@ export const initialState: State = [
     {
         projectId: "ea065155-960b-4d43-b3e0-b02d722b69a2",
         projectName: "Построить корабль",
+        taskCount: 3,
         columns: {
             "column-1": {
                 title: "Queue",
                 tasks: [
                     {
                         taskId: uuid(),
-                        content: "Задача 1",
                         columnId: "column-1",
                         projectId: "ea065155-960b-4d43-b3e0-b02d722b69a2",
-                    },
-                    {
-                        taskId: uuid(),
-                        content: "Задача 2",
-                        columnId: "column-1",
-                        projectId: "ea065155-960b-4d43-b3e0-b02d722b69a2",
-                    },
-                    {
-                        taskId: uuid(),
-                        content: "Задача 3",
-                        columnId: "column-1",
-                        projectId: "ea065155-960b-4d43-b3e0-b02d722b69a2",
-                    },
-                    {
-                        taskId: uuid(),
-                        content: "Задача 7",
-                        columnId: "column-1",
-                        projectId: "ea065155-960b-4d43-b3e0-b02d722b69a2",
+                        taskNumber: 1,
+                        taskTitle: "Задача 1",
+                        taskCreateDate: 1696199965167,
                     },
                 ],
             },
@@ -122,21 +72,11 @@ export const initialState: State = [
                 tasks: [
                     {
                         taskId: uuid(),
-                        content: "Задача 4",
                         columnId: "column-2",
                         projectId: "ea065155-960b-4d43-b3e0-b02d722b69a2",
-                    },
-                    {
-                        taskId: uuid(),
-                        content: "Задача 5",
-                        columnId: "column-2",
-                        projectId: "ea065155-960b-4d43-b3e0-b02d722b69a2",
-                    },
-                    {
-                        taskId: uuid(),
-                        content: "Задача 6",
-                        columnId: "column-2",
-                        projectId: "ea065155-960b-4d43-b3e0-b02d722b69a2",
+                        taskNumber: 2,
+                        taskTitle: "Задача 2",
+                        taskCreateDate: 1696200075590,
                     },
                 ],
             },
@@ -145,21 +85,11 @@ export const initialState: State = [
                 tasks: [
                     {
                         taskId: uuid(),
-                        content: "Задача 8",
                         columnId: "column-3",
                         projectId: "ea065155-960b-4d43-b3e0-b02d722b69a2",
-                    },
-                    {
-                        taskId: uuid(),
-                        content: "Задача 9",
-                        columnId: "column-3",
-                        projectId: "ea065155-960b-4d43-b3e0-b02d722b69a2",
-                    },
-                    {
-                        taskId: uuid(),
-                        content: "Задача 10",
-                        columnId: "column-3",
-                        projectId: "ea065155-960b-4d43-b3e0-b02d722b69a2",
+                        taskNumber: 3,
+                        taskTitle: "Задача 3",
+                        taskCreateDate: 16962000859890,
                     },
                 ],
             },

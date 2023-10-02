@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
 import { Board, Id } from "../../types";
@@ -17,13 +17,18 @@ interface Props {
 }
 
 export const CreateTask: FC<Props> = ({ onClose, columnId, projectId }) => {
-    const [text, setText] = useState("");
+    const [title, setTitle] = useState("");
     const dispatch = useAppDispatch();
+    const inputRef = useRef<HTMLInputElement>(null);
 
     const onCreateTask = () => {
-        dispatch(addTask(columnId, projectId, text));
+        dispatch(addTask(columnId, projectId, title));
         onClose();
     };
+
+    useEffect(() => {
+        inputRef.current?.focus();
+    }, []);
 
     return createPortal(
         <ModalContainer onClose={onClose}>
@@ -36,7 +41,7 @@ export const CreateTask: FC<Props> = ({ onClose, columnId, projectId }) => {
                 <div className="createTask-header">
                     <h2>Новая задача</h2>
                     <div className="createTask-buttons">
-                        <button className="createTask-create" onClick={onCreateTask}>
+                        <button className="createTask-create" onClick={onCreateTask} disabled={!(title.length > 3)}>
                             Создать
                         </button>
                         <button className="createTask-cancel" onClick={onClose}>
@@ -46,9 +51,10 @@ export const CreateTask: FC<Props> = ({ onClose, columnId, projectId }) => {
                 </div>
                 <input
                     className="input"
-                    value={text}
+                    value={title}
                     placeholder="Наименование задачи"
-                    onChange={(e) => setText(e.target.value)}
+                    onChange={(e) => setTitle(e.target.value)}
+                    ref={inputRef}
                 />
             </div>
         </ModalContainer>,

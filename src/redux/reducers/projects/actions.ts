@@ -28,9 +28,9 @@ export const setProjects = (projects: State): Action => ({
     payload: { projects },
 });
 
-export const addTask = (columnId: keyof Board, projectId: Id, content: string): Action => ({
+export const addTask = (columnId: keyof Board, projectId: Id, taskTitle: string): Action => ({
     type: ADD_TASK,
-    payload: { columnId, projectId, content },
+    payload: { columnId, projectId, taskTitle },
 });
 
 export const removeTask = (taskId: string, columnId: keyof Board, projectId: Id): Action => ({

@@ -30,10 +30,12 @@ export const Board: FC<Props> = ({ project }) => {
             const newTasks = Array.from(column.tasks);
             const [movedTask] = newTasks.splice(source.index, 1);
             newTasks.splice(destination.index, 0, movedTask);
+
             dispatch(
                 setProject({
                     projectId: project.projectId,
                     projectName: project.projectName,
+                    taskCount: 0,
                     columns: { ...columns, [source.droppableId]: { ...column, tasks: newTasks } },
                 })
             );
@@ -45,12 +47,15 @@ export const Board: FC<Props> = ({ project }) => {
             const sourceTasks = Array.from(sourceColumn.tasks);
             const destinationTasks = Array.from(destinationColumn.tasks);
             const [movedTask] = sourceTasks.splice(source.index, 1);
+            const newColumnId = destination.droppableId as keyof BoardType;
+            movedTask.columnId = newColumnId;
             destinationTasks.splice(destination.index, 0, movedTask);
 
             dispatch(
                 setProject({
                     projectId: project.projectId,
                     projectName: project.projectName,
+                    taskCount: 0,
                     columns: {
                         ...columns,
                         [source.droppableId]: { ...sourceColumn, tasks: sourceTasks },

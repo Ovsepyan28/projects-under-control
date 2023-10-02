@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
 import { ModalContainer } from "../ModalContainer";
@@ -15,11 +15,16 @@ interface Props {
 export const CreateProject: FC<Props> = ({ onClose }) => {
     const [text, setText] = useState("");
     const dispatch = useAppDispatch();
+    const inputRef = useRef<HTMLInputElement>(null);
 
     const onCreateProject = () => {
         dispatch(addProject(text));
         onClose();
     };
+
+    useEffect(() => {
+        inputRef.current?.focus();
+    }, []);
 
     return createPortal(
         <ModalContainer onClose={onClose}>
@@ -32,7 +37,7 @@ export const CreateProject: FC<Props> = ({ onClose }) => {
                 <div className="createTask-header">
                     <h2>Новый проект</h2>
                     <div className="createTask-buttons">
-                        <button className="createTask-create" onClick={onCreateProject}>
+                        <button className="createTask-create" onClick={onCreateProject} disabled={!(text.length > 3)}>
                             Создать
                         </button>
                         <button className="createTask-cancel" onClick={onClose}>
@@ -45,6 +50,7 @@ export const CreateProject: FC<Props> = ({ onClose }) => {
                     value={text}
                     placeholder="Наименование проекта"
                     onChange={(e) => setText(e.target.value)}
+                    ref={inputRef}
                 />
             </div>
         </ModalContainer>,
