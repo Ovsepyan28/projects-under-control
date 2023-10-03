@@ -1,18 +1,21 @@
-.createTask-header
+.createTask
     display: flex
-    align-items: center
-    justify-content: space-between
-    padding: 0 20px
-    width: 500px
-    .createTask-buttons
+    flex-direction: column
+    .createTask-header
         display: flex
-        gap: 5px
-        .createTask-create
-            background-color: #55ef88
-        .createTask-cancel
-            background-color: #f39274
+        align-items: center
+        justify-content: space-between
+        padding: 0 20px
+        .createTask-buttons
+            display: flex
+            gap: 5px
+            .createTask-create
+                background-color: #55ef88
+            .createTask-cancel
+                background-color: #f39274
 
-.createTask-input
-    height: 30px
-    outline: none
-    border-radius: 5px
+    .createTask-input
+        height: 30px
+        outline: none
+        border-radius: 5px
+        margin: 0 5px 5px 5px

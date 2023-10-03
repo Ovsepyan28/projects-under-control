@@ -16,7 +16,7 @@ export const ConfirmRemove: FC<Props> = ({ onClose, onRemove }) => {
         <ModalContainer onClose={onClose}>
             <PortalContent>
                 <div className="confirm">
-                    <h2>Подтверждение удаления</h2>
+                    <h2 className="confirm-title">Подтверждение удаления</h2>
                     <div className="confirm-buttons">
                         <button className="confirm-cancel" onClick={onClose}>
                             Cancel

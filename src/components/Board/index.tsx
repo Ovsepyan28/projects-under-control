@@ -33,9 +33,7 @@ export const Board: FC<Props> = ({ project }) => {
 
             dispatch(
                 setProject({
-                    projectId: project.projectId,
-                    projectName: project.projectName,
-                    taskCount: 0,
+                    ...project,
                     columns: { ...columns, [source.droppableId]: { ...column, tasks: newTasks } },
                 })
             );
@@ -53,9 +51,7 @@ export const Board: FC<Props> = ({ project }) => {
 
             dispatch(
                 setProject({
-                    projectId: project.projectId,
-                    projectName: project.projectName,
-                    taskCount: 0,
+                    ...project,
                     columns: {
                         ...columns,
                         [source.droppableId]: { ...sourceColumn, tasks: sourceTasks },

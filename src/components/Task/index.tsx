@@ -47,11 +47,11 @@ export const Task: FC<Props> = ({ index, task }) => {
                     >
                         {task.taskTitle}
                         <div className="task-buttons">
-                            <button className="button edit" onClick={(e) => e.stopPropagation()}>
+                            <button className="edit" onClick={(e) => e.stopPropagation()}>
                                 Edit
                             </button>
-                            <button className="button delete" onClick={onRemoveTask}>
-                                Del
+                            <button className="delete" onClick={onRemoveTask}>
+                                Delete
                             </button>
                         </div>
                     </div>

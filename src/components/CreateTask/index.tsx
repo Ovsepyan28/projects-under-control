@@ -33,25 +33,27 @@ export const CreateTask: FC<Props> = ({ onClose, columnId, projectId }) => {
 
     return createPortal(
         <ModalContainer onClose={onClose}>
-            <PortalContent>
-                <div className="createTask-header">
-                    <h2>Новая задача</h2>
-                    <div className="createTask-buttons">
-                        <button className="createTask-create" onClick={onCreateTask} disabled={!(title.length > 3)}>
-                            Create
-                        </button>
-                        <button className="createTask-cancel" onClick={onClose}>
-                            Cancel
-                        </button>
+            <PortalContent maxWidth={700}>
+                <div className="createTask">
+                    <div className="createTask-header">
+                        <h2>Новая задача</h2>
+                        <div className="createTask-buttons">
+                            <button className="createTask-cancel" onClick={onClose}>
+                                Cancel
+                            </button>
+                            <button className="createTask-create" onClick={onCreateTask} disabled={!(title.length > 3)}>
+                                Create
+                            </button>
+                        </div>
                     </div>
+                    <input
+                        className="createTask-input"
+                        value={title}
+                        placeholder="Наименование задачи"
+                        onChange={(e) => setTitle(e.target.value)}
+                        ref={inputRef}
+                    />
                 </div>
-                <input
-                    className="createTask-input"
-                    value={title}
-                    placeholder="Наименование задачи"
-                    onChange={(e) => setTitle(e.target.value)}
-                    ref={inputRef}
-                />
             </PortalContent>
         </ModalContainer>,
         document.getElementById("modalContainer") || document.body

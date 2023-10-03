@@ -25,7 +25,10 @@ export const Column: FC<Props> = ({ title, tasks, columnId, projectId }) => {
     return (
         <div className="column">
             <div className="column-header">
-                <h2>{title}</h2>
+                <div className="column-title">
+                    <h3>{title}</h3>
+                    <h3 className="column-task-counter">{tasks.length ? `/ ${tasks.length}` : ""}</h3>
+                </div>
                 <button className="column-new" onClick={() => setOpenModal(true)}>
                     New
                 </button>

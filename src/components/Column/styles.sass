@@ -1,16 +1,19 @@
-
 .column
     display: flex
     flex-direction: column
     width: 300px
     background-color: #cbc8c4
     border-radius: 10px
-    padding: 0 5px
     .column-header
         display: flex
         align-items: center
         justify-content: space-between
         padding: 0 20px
+        .column-title
+            display: flex
+            gap: 5px
+            .column-task-counter
+                font-weight: normal
         .column-new
             background-color: #fff
     .tasks-list
