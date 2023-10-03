@@ -1,4 +1,4 @@
-import { FC, useEffect, useRef, useState } from "react";
+import { FC, KeyboardEventHandler, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
 import { ModalContainer } from "../ModalContainer";
@@ -31,14 +31,20 @@ export const CreateProject: FC<Props> = ({ onClose, project = null }) => {
     };
 
     const onCreateProject = () => {
-        dispatch(addProject(text));
+        dispatch(addProject(text.trim()));
         onClose();
     };
 
     const onEditProject = (project: Project): void => {
-        project.projectName = text;
+        project.projectName = text.trim();
         dispatch(setProject(project));
         onClose();
+    };
+
+    const onEnter: KeyboardEventHandler<HTMLInputElement> = (e) => {
+        if (e.code === "NumpadEnter" && text.trim().length > 3) {
+            handleSubmit();
+        }
     };
 
     useEffect(() => {
@@ -70,6 +76,7 @@ export const CreateProject: FC<Props> = ({ onClose, project = null }) => {
                         placeholder="Наименование проекта"
                         onChange={(e) => setText(e.target.value)}
                         ref={inputRef}
+                        onKeyDown={(e) => onEnter(e)}
                     />
                 </div>
             </PortalContent>
