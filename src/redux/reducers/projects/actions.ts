@@ -6,6 +6,7 @@ export const REMOVE_PROJECT = "REMOVE_PROJECT";
 export const SET_PROJECT = "SET_PROJECT";
 export const SET_PROJECTS = "SET_PROJECTS";
 export const ADD_TASK = "ADD_TASK";
+export const SET_TASK = "SET_TASK";
 export const REMOVE_TASK = "REMOVE_TASK";
 
 export const addProject = (projectName: string): Action => ({
@@ -28,9 +29,27 @@ export const setProjects = (projects: State): Action => ({
     payload: { projects },
 });
 
-export const addTask = (columnId: keyof Board, projectId: Id, taskTitle: string): Action => ({
+export const addTask = (
+    columnId: keyof Board,
+    projectId: Id,
+    taskTitle: string,
+    content: string,
+    taskPriority: "low" | "medium" | "high"
+): Action => ({
     type: ADD_TASK,
-    payload: { columnId, projectId, taskTitle },
+    payload: { columnId, projectId, taskTitle, content, taskPriority },
+});
+
+export const setTask = (
+    columnId: keyof Board,
+    projectId: Id,
+    taskTitle: string,
+    content: string,
+    taskPriority: "low" | "medium" | "high",
+    taskId: Id
+): Action => ({
+    type: SET_TASK,
+    payload: { columnId, projectId, taskTitle, content, taskPriority, taskId },
 });
 
 export const removeTask = (taskId: string, columnId: keyof Board, projectId: Id): Action => ({

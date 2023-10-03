@@ -5,5 +5,25 @@ export type Action =
     | { type: "REMOVE_PROJECT"; payload: { projectId: Id } }
     | { type: "SET_PROJECT"; payload: { project: Project } }
     | { type: "SET_PROJECTS"; payload: { projects: State } }
-    | { type: "ADD_TASK"; payload: { columnId: keyof Board; projectId: Id; taskTitle: string } }
+    | {
+          type: "ADD_TASK";
+          payload: {
+              columnId: keyof Board;
+              projectId: Id;
+              taskTitle: string;
+              content?: string;
+              taskPriority: "low" | "medium" | "high";
+          };
+      }
+    | {
+          type: "SET_TASK";
+          payload: {
+              columnId: keyof Board;
+              projectId: Id;
+              taskTitle: string;
+              content?: string;
+              taskPriority: "low" | "medium" | "high";
+              taskId: Id;
+          };
+      }
     | { type: "REMOVE_TASK"; payload: { taskId: string; columnId: keyof Board; projectId: Id } };

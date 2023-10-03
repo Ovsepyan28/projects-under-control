@@ -6,11 +6,11 @@ export type Task = {
     projectId: Id;
     taskTitle: string;
     content?: string;
-    taskNumber?: number;
+    taskNumber: number | undefined;
     taskCreateDate: number;
-    taskFinishDate?: string;
-    taskPriority?: "low" | "medium" | "high";
-    subtasks?: Subtasks;
+    taskFinishDate?: number;
+    taskPriority: "low" | "medium" | "high";
+    subtasks: Subtasks;
     comments?: Comments;
 };
 
@@ -31,3 +31,9 @@ export type Comment = string;
 export type Comments = string[];
 
 export type State = Project[];
+
+export type CreateTaskFormValues = {
+    taskTitle: string;
+    content?: string;
+    taskPriority: "low" | "medium" | "high";
+};
