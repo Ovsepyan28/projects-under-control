@@ -11,6 +11,7 @@ import { CreateTask } from "../CreateTask";
 import { useAppDispatch } from "../../hooks/redux/useAppDispatch";
 import { removeTask } from "../../redux/reducers/projects/actions";
 import { getSubtasksCount } from "../../utils/getSubtasksCount";
+import { getPriority } from "../../utils/getPriority";
 
 import "./styles.sass";
 
@@ -48,12 +49,6 @@ export const Task: FC<Props> = ({ index, task }) => {
         setOpenConfirm(false);
     }, []);
 
-    const priorityMap = {
-        low: "Low",
-        medium: "Medium",
-        high: "High",
-    };
-
     return (
         <>
             <Draggable draggableId={task.taskId} index={index}>
@@ -71,7 +66,7 @@ export const Task: FC<Props> = ({ index, task }) => {
                             </div>
                             <div className="taskProperties">
                                 <div className={cn("taskPriority", task.taskPriority)}>
-                                    {priorityMap[task.taskPriority]}
+                                    {getPriority(task.taskPriority)}
                                 </div>
                                 <div className="subtaskCounter">{getSubtasksCount(task)}</div>
                             </div>
@@ -87,7 +82,7 @@ export const Task: FC<Props> = ({ index, task }) => {
                     </div>
                 )}
             </Draggable>
-            {openFull && <FullTask onClose={onRefuseFull} />}
+            {openFull && <FullTask onClose={onRefuseFull} task={task} />}
             {openConfirm && (
                 <ConfirmRemove
                     onClose={onRefuseConfirm}

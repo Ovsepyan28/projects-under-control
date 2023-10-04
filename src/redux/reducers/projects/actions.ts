@@ -1,4 +1,4 @@
-import { Board, Id, Project, State } from "../../../types";
+import { Columns, Id, Project, State } from "../../../types";
 import { Action } from "./types";
 
 export const ADD_PROJECT = "ADD_PROJECT";
@@ -30,7 +30,7 @@ export const setProjects = (projects: State): Action => ({
 });
 
 export const addTask = (
-    columnId: keyof Board,
+    columnId: keyof Columns,
     projectId: Id,
     taskTitle: string,
     content: string,
@@ -41,7 +41,7 @@ export const addTask = (
 });
 
 export const setTask = (
-    columnId: keyof Board,
+    columnId: keyof Columns,
     projectId: Id,
     taskTitle: string,
     content: string,
@@ -52,7 +52,7 @@ export const setTask = (
     payload: { columnId, projectId, taskTitle, content, taskPriority, taskId },
 });
 
-export const removeTask = (taskId: string, columnId: keyof Board, projectId: Id): Action => ({
+export const removeTask = (taskId: string, columnId: keyof Columns, projectId: Id): Action => ({
     type: REMOVE_TASK,
     payload: { taskId, columnId, projectId },
 });

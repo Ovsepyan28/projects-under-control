@@ -1,1 +1,43 @@
-
+.fullTask
+    display: flex
+    flex-direction: column
+    padding: 0 5px 5px 5px
+    max-height: 90dvh
+    overflow: hidden
+    .fullTask_header
+        display: flex
+        align-items: center
+        justify-content: space-between
+        padding: 0 15px
+        .fullTask_button_cancel
+            background-color: #55ef88
+    .fullTask_scroll
+        display: flex
+        flex-direction: column
+        gap: 5px
+        overflow: auto
+        .summary,.description,.subtasks
+            display: flex
+            flex-direction: column
+            background-color: #fff
+            border-radius: 5px
+            padding: 10px
+            gap: 5px
+            .summary_title, .description_title, .subtasks_title
+                border-bottom: 1px solid #0000005a
+                padding-bottom: 5px
+                text-align: center
+.subtasks_input
+    display: flex
+    gap: 5px
+    .createSubtask_input
+        width: 100%
+    .createSubtask_create
+        background-color: #55ef88
+.subtasks_form
+    display: flex
+    flex-direction: column
+    gap: 5px
+    margin: 0 5px 5px 5px
+    .subtasks_form_item
+        cursor: pointer

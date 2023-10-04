@@ -1,6 +1,6 @@
 import { v4 as uuid } from "uuid";
 
-import { Board, State, Task } from "../../../types";
+import { Columns, State, Task } from "../../../types";
 import { Action } from "./types";
 
 import { ADD_PROJECT, REMOVE_PROJECT, SET_PROJECT, ADD_TASK, REMOVE_TASK, SET_TASK } from "./actions";
@@ -55,12 +55,12 @@ export const projectsReducer = (state = getStartProjects(), action: Action): Sta
             };
             state
                 .find((project) => project.projectId === action.payload.projectId)
-                ?.columns[action.payload.columnId as keyof Board].tasks.push(newTask);
+                ?.columns[action.payload.columnId as keyof Columns].tasks.push(newTask);
             return state;
         case SET_TASK:
             let changeableTask = state
                 .find((project) => project.projectId === action.payload.projectId)
-                ?.columns[action.payload.columnId as keyof Board].tasks.find(
+                ?.columns[action.payload.columnId as keyof Columns].tasks.find(
                     (task) => task.taskId === action.payload.taskId
                 );
             if (changeableTask) {
@@ -72,9 +72,12 @@ export const projectsReducer = (state = getStartProjects(), action: Action): Sta
         case REMOVE_TASK:
             const targetProjectIndex = state.findIndex((project) => project.projectId === action.payload.projectId);
             const targetTaskIndex = state[targetProjectIndex].columns[
-                action.payload.columnId as keyof Board
+                action.payload.columnId as keyof Columns
             ].tasks.findIndex((task) => task.taskId === action.payload.taskId);
-            state[targetProjectIndex].columns[action.payload.columnId as keyof Board].tasks.splice(targetTaskIndex, 1);
+            state[targetProjectIndex].columns[action.payload.columnId as keyof Columns].tasks.splice(
+                targetTaskIndex,
+                1
+            );
             return [...state];
         default:
             return state;

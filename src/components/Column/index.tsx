@@ -1,7 +1,7 @@
 import { FC, useCallback, useState } from "react";
 import { Droppable, DroppableProvided } from "react-beautiful-dnd";
 
-import { Board, Id, Tasks } from "../../types";
+import { Columns, Id, Tasks } from "../../types";
 
 import { Task } from "../Task";
 import { CreateTask } from "../CreateTask";
@@ -11,7 +11,7 @@ import "./styles.sass";
 interface Props {
     title: string;
     tasks: Tasks;
-    columnId: keyof Board;
+    columnId: keyof Columns;
     projectId: Id;
 }
 

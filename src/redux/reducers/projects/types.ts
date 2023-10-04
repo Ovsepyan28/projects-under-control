@@ -1,4 +1,4 @@
-import { Board, Id, Project, State } from "../../../types";
+import { Columns, Id, Project, State } from "../../../types";
 
 export type Action =
     | { type: "ADD_PROJECT"; payload: { projectName: string } }
@@ -8,7 +8,7 @@ export type Action =
     | {
           type: "ADD_TASK";
           payload: {
-              columnId: keyof Board;
+              columnId: keyof Columns;
               projectId: Id;
               taskTitle: string;
               content?: string;
@@ -18,7 +18,7 @@ export type Action =
     | {
           type: "SET_TASK";
           payload: {
-              columnId: keyof Board;
+              columnId: keyof Columns;
               projectId: Id;
               taskTitle: string;
               content?: string;
@@ -26,4 +26,4 @@ export type Action =
               taskId: Id;
           };
       }
-    | { type: "REMOVE_TASK"; payload: { taskId: string; columnId: keyof Board; projectId: Id } };
+    | { type: "REMOVE_TASK"; payload: { taskId: string; columnId: keyof Columns; projectId: Id } };

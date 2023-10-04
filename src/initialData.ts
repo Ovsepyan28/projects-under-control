@@ -23,7 +23,7 @@ export const initialState: State = [
                             { subtaskId: uuid(), content: "Совершить первый полет", isDone: false },
                         ],
                         taskPriority: "high",
-                        taskCreateDate: 1696199995167,
+                        taskCreateDate: 1695600000000,
                     },
                     {
                         taskId: uuid(),
@@ -33,7 +33,7 @@ export const initialState: State = [
                         taskTitle: "Продажа самолета",
                         subtasks: [],
                         taskPriority: "low",
-                        taskCreateDate: 1696199095167,
+                        taskCreateDate: 1695945600000,
                         content:
                             "В этой задаче проводятся статические испытания, проверяется работа мотора и совершается первый полет самолета.",
                     },
@@ -54,7 +54,7 @@ export const initialState: State = [
                             { subtaskId: uuid(), content: "Закрепить крыло", isDone: false },
                         ],
                         taskPriority: "high",
-                        taskCreateDate: 1696200035590,
+                        taskCreateDate: 1695686400000,
                         content:
                             "Эта задача включает в себя вырезку деталей фюзеляжа, сборку рамы и закрепление крыла.",
                     },
@@ -75,8 +75,8 @@ export const initialState: State = [
                             { subtaskId: uuid(), content: "Рассмотреть материалы для фюзеляжа", isDone: true },
                         ],
                         taskPriority: "high",
-                        taskCreateDate: 16962000359890,
-                        taskFinishDate: 16962000659890,
+                        taskCreateDate: 1695772800000,
+                        taskFinishDate: 1696118400000,
                         content:
                             "В этой задаче требуется исследовать дизайн самолета, включая форму крыла, выбор двигателя и рассмотрение материалов для фюзеляжа.",
                     },
@@ -92,8 +92,8 @@ export const initialState: State = [
                             { subtaskId: uuid(), content: "Заказать стекло для кабины", isDone: true },
                         ],
                         taskPriority: "medium",
-                        taskCreateDate: 16962000399890,
-                        taskFinishDate: 16962008659890,
+                        taskCreateDate: 1695859200000,
+                        taskFinishDate: 1696291200000,
                         content:
                             "Здесь нужно собрать все необходимые материалы для проекта, включая алюминиевые листы, мотор и винты, а также стекло для кабины.",
                     },
@@ -101,50 +101,4 @@ export const initialState: State = [
             },
         },
     },
-    // {
-    //     projectId: "ea065155-960b-4d43-b3e0-b02d722b69a2",
-    //     projectName: "Построить корабль",
-    //     taskCount: 3,
-    //     columns: {
-    //         "column-1": {
-    //             title: "Queue",
-    //             tasks: [
-    //                 {
-    //                     taskId: uuid(),
-    //                     columnId: "column-1",
-    //                     projectId: "ea065155-960b-4d43-b3e0-b02d722b69a2",
-    //                     taskNumber: 1,
-    //                     taskTitle: "Задача 1",
-    //                     taskCreateDate: 1696199965167,
-    //                 },
-    //             ],
-    //         },
-    //         "column-2": {
-    //             title: "Development",
-    //             tasks: [
-    //                 {
-    //                     taskId: uuid(),
-    //                     columnId: "column-2",
-    //                     projectId: "ea065155-960b-4d43-b3e0-b02d722b69a2",
-    //                     taskNumber: 2,
-    //                     taskTitle: "Задача 2",
-    //                     taskCreateDate: 1696200075590,
-    //                 },
-    //             ],
-    //         },
-    //         "column-3": {
-    //             title: "Done",
-    //             tasks: [
-    //                 {
-    //                     taskId: uuid(),
-    //                     columnId: "column-3",
-    //                     projectId: "ea065155-960b-4d43-b3e0-b02d722b69a2",
-    //                     taskNumber: 3,
-    //                     taskTitle: "Задача 3",
-    //                     taskCreateDate: 16962000859890,
-    //                 },
-    //             ],
-    //         },
-    //     },
-    // },
 ];

@@ -2,7 +2,7 @@ import { FC } from "react";
 import { createPortal } from "react-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
 
-import { Board, CreateTaskFormValues, Id, Task } from "../../types";
+import { Columns, CreateTaskFormValues, Id, Task } from "../../types";
 
 import { ModalContainer } from "../ModalContainer";
 import { PortalContent } from "../PortalContent";
@@ -14,7 +14,7 @@ import "./styles.sass";
 
 interface Props {
     projectId: Id;
-    columnId: keyof Board;
+    columnId: keyof Columns;
     task?: Task;
     onClose: () => void;
 }

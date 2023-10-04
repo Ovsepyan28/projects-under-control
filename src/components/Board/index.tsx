@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
 import { DragDropContext, DraggableLocation, DropResult } from "react-beautiful-dnd";
 
-import { Board as BoardType, Project } from "../../types";
+import { Columns, Project } from "../../types";
 
 import { Column } from "../Column";
 
@@ -15,7 +15,7 @@ interface Props {
 }
 
 export const Board: FC<Props> = ({ project }) => {
-    const [columns, setColumns] = useState<BoardType>(project.columns);
+    const [columns, setColumns] = useState<Columns>(project.columns);
     const dispatch = useAppDispatch();
 
     const onDragEnd = (result: DropResult) => {
@@ -26,7 +26,7 @@ export const Board: FC<Props> = ({ project }) => {
 
         if (source.droppableId === destination.droppableId) {
             // Перемещение элемента внутри одной колонки
-            const column = columns[source.droppableId as keyof BoardType];
+            const column = columns[source.droppableId as keyof Columns];
             const newTasks = Array.from(column.tasks);
             const [movedTask] = newTasks.splice(source.index, 1);
             newTasks.splice(destination.index, 0, movedTask);
@@ -40,12 +40,20 @@ export const Board: FC<Props> = ({ project }) => {
             setColumns({ ...columns, [source.droppableId]: { ...column, tasks: newTasks } });
         } else {
             // Перемещение элемента между колонками
-            const sourceColumn = columns[source.droppableId as keyof BoardType];
-            const destinationColumn = columns[destination.droppableId as keyof BoardType];
+            const sourceColumn = columns[source.droppableId as keyof Columns];
+            const destinationColumn = columns[destination.droppableId as keyof Columns];
             const sourceTasks = Array.from(sourceColumn.tasks);
             const destinationTasks = Array.from(destinationColumn.tasks);
             const [movedTask] = sourceTasks.splice(source.index, 1);
-            const newColumnId = destination.droppableId as keyof BoardType;
+
+            // Установка даты завершения задачи, или сброс если задача возвращается из Done
+            if (result.destination.droppableId === "column-3") {
+                movedTask.taskFinishDate = Date.now();
+            } else {
+                movedTask.taskFinishDate = undefined;
+            }
+
+            const newColumnId = destination.droppableId as keyof Columns;
             movedTask.columnId = newColumnId;
             destinationTasks.splice(destination.index, 0, movedTask);
 
@@ -73,9 +81,9 @@ export const Board: FC<Props> = ({ project }) => {
                 {Object.keys(columns).map((columnId) => (
                     <Column
                         key={columnId}
-                        title={columns[columnId as keyof BoardType].title}
-                        tasks={columns[columnId as keyof BoardType].tasks}
-                        columnId={columnId as keyof BoardType}
+                        title={columns[columnId as keyof Columns].title}
+                        tasks={columns[columnId as keyof Columns].tasks}
+                        columnId={columnId as keyof Columns}
                         projectId={project.projectId}
                     />
                 ))}
